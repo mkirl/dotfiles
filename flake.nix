@@ -11,13 +11,18 @@
       inputs.hyprland.follows = "hyprland";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, hyprland, ... }:
     let
       system = "x86_64-linux";
 
       # User Variables
       hostname = "nixos";
       username = "mike";
+      cpuType = "intel";
+      gpuType = "intel";
+      theKBDLayout = "us";
+      theLCVariables = "en_US.UTF-8";
+      theTimezone = "America/Chicago";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -25,16 +30,16 @@
 
     in {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [ ./configuration.nix ];
+      "${hostname}" = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+	  inherit system; inherit inputs;
+	  inherit username; inherit hostname;
+	  inherit cpuType; inherit theKBDLayout;
+	  inherit theLCVariables; inherit gpuType;
+          inherit theTimezone;
+	}; 
+        modules = [ ./system.nix ];
      };
-    };
-    homeConfigurations = {
-      ${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
-      };
     };
   };
 }
