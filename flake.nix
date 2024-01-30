@@ -23,6 +23,8 @@
       theKBDLayout = "us";
       theLCVariables = "en_US.UTF-8";
       theTimezone = "America/Chicago";
+      theLocale = "en_US.UTF-8";
+      gitUsername = "Michael Kirl";
 
       pkgs = import nixpkgs {
         inherit system;
