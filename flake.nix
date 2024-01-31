@@ -42,6 +42,7 @@
 	  inherit theLCVariables; inherit gpuType;
           inherit theTimezone; inherit wallpaperGit;
 	  inherit wallpaperDir; inherit gitUsername;
+	  inherit theLocale;
 	}; 
         modules = [ ./system.nix 
 	  home-manager.nixosModules.home-manager {
