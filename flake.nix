@@ -33,6 +33,7 @@
       waybarStyle = "style2";
       flakeDir = "/home/${username}/.dotfiles";      
       gitEmail = "michael.e.kirl@gmail.com";
+      theme = "gigavolt";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -58,7 +59,9 @@
 	      inherit wallpaperGit; inherit borderAnim;
               inherit gpuType; inherit cpuType;
               inherit browser; inherit wallpaperDir;
-              inherit gitEmail;
+              inherit gitEmail; inherit theme;
+              inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemefromSchema;
+
 	    };
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
