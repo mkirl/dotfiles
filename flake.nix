@@ -43,7 +43,14 @@
           inherit theTimezone; inherit wallpaperGit;
 	  inherit wallpaperDir; inherit gitUsername;
 	}; 
-        modules = [ ./system.nix ];
+        modules = [ ./system.nix 
+	  home-manager.nixosModules.home-manager {
+	    home-manager.extraSpecialArgs = {
+	      inherit username; inherit gitUsername;
+	      inherit inputs;
+	    };
+	  }
+	];
      };
     };
   };
