@@ -28,7 +28,7 @@
       gitUsername = "Michael Kirl";
       wallpaperDir = "/home/${username}/Pictures/Wallpapers";
       wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git";
-      broswer = "firefox";
+      browser = "firefox";
       borderAnim = "on";
       waybarStyle = "style2";
       flakeDir = "/home/${username}/.dotfiles";      
