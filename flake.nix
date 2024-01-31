@@ -34,6 +34,7 @@
       flakeDir = "/home/${username}/.dotfiles";      
       gitEmail = "michael.e.kirl@gmail.com";
       theme = "gigavolt";
+      intel-bus-id = "PCI:0:2:0";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -60,6 +61,7 @@
               inherit gpuType; inherit cpuType;
               inherit browser; inherit wallpaperDir;
               inherit gitEmail; inherit theme;
+              inherit waybarStyle;
               inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemefromSchema;
 
 	    };
