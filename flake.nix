@@ -25,6 +25,8 @@
       theTimezone = "America/Chicago";
       theLocale = "en_US.UTF-8";
       gitUsername = "Michael Kirl";
+      wallpaperDir = "/home/${username}/Pictures/Wallpapers";
+      wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -38,7 +40,8 @@
 	  inherit username; inherit hostname;
 	  inherit cpuType; inherit theKBDLayout;
 	  inherit theLCVariables; inherit gpuType;
-          inherit theTimezone;
+          inherit theTimezone; inherit wallpaperGit;
+	  inherit wallpaperDir; inherit gitUsername;
 	}; 
         modules = [ ./system.nix ];
      };
