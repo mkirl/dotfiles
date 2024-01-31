@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-colors.url = "github:misterio77/nix-colors";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -30,6 +31,7 @@
       broswer = "firefox";
       borderAnim = "on";
       waybarStyle = "style2";
+      flakeDir = "/home/${username}/.dotfiles";      
 
       pkgs = import nixpkgs {
         inherit system;
@@ -53,6 +55,9 @@
 	      inherit username; inherit gitUsername;
 	      inherit inputs;
 	    };
+	    home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+	    home-manager.users.${username} = import ./home.nix;
 	  }
 	];
      };
