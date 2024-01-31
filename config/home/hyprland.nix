@@ -47,7 +47,7 @@ in with lib; {
       env = GDK_BACKEND, wayland
       env = CLUTTER_BACKEND, wayland
       env = SDL_VIDEODRIVER, wayland
-      env = XCURSOR_SIZE, 24
+      env = XCURSOR_SIZE, 36 
       env = XCURSOR_THEME, Bibata-Modern-Ice
       env = QT_QPA_PLATFORM, wayland
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
