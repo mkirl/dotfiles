@@ -32,6 +32,7 @@
       borderAnim = "on";
       waybarStyle = "style2";
       flakeDir = "/home/${username}/.dotfiles";      
+      gitEmail = "michael.e.kirl@gmail.com";
 
       pkgs = import nixpkgs {
         inherit system;
@@ -53,7 +54,11 @@
 	  home-manager.nixosModules.home-manager {
 	    home-manager.extraSpecialArgs = {
 	      inherit username; inherit gitUsername;
-	      inherit inputs;
+	      inherit inputs; inherit flakeDir;
+	      inherit wallpaperGit; inherit borderAnim;
+              inherit gpuType; inherit cpuType;
+              inherit browser; inherit wallpaperDir;
+              inherit gitEmail;
 	    };
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
