@@ -60,7 +60,7 @@
 	      inherit wallpaperGit; inherit borderAnim;
               inherit gpuType; inherit cpuType;
               inherit browser; inherit wallpaperDir;
-              inherit gitEmail; 
+              inherit gitEmail; inherit theme; 
               inherit waybarStyle;
               inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemefromSchema;
 
