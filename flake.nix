@@ -27,6 +27,9 @@
       gitUsername = "Michael Kirl";
       wallpaperDir = "/home/${username}/Pictures/Wallpapers";
       wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git";
+      broswer = "firefox";
+      borderAnim = "on";
+      waybarStyle = "style2";
 
       pkgs = import nixpkgs {
         inherit system;
