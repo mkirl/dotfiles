@@ -7,7 +7,7 @@
     x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    size = 24;
+    size = 72;
   };
 
   # Theme GTK
