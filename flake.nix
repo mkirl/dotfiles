@@ -65,7 +65,7 @@
               inherit browser; inherit wallpaperDir;
               inherit gitEmail; inherit theme; 
               inherit waybarStyle;
-              inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemefromSchema;
+              inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 
 	    };
 	    home-manager.useGlobalPkgs = true;
