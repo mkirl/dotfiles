@@ -21,7 +21,7 @@
 
   # Define Settings For Xresources
   xresources.properties = {
-    "Xcursor.size" = 24;
+    "Xcursor.size" = 72;
   };
 
   # Install & Configure Git
