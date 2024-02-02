@@ -15,6 +15,7 @@
     ./vim.nix
     ./bash.nix
     ./gtk-qt.nix
+    ./nixvim.nix
 
     # Install Programs & Scripts For User
     ./packages.nix
