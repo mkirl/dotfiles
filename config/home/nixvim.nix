@@ -2,8 +2,8 @@
 
 {
   programs.nixvim = {
-    extraPlugins = [ pkgs.vimPlugins.gruvbox ];
-    colorscheme = "gruvbox";
+    extraPlugins = [ pkgs.vimPlugins.catppuccin-nvim ];
+    colorscheme = "catppuccin-nvim";
   };
   
 }
