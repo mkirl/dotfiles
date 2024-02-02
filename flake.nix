@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nixvim, ... }:
     let
       system = "x86_64-linux";
 
