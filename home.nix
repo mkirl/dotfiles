@@ -16,6 +16,7 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.default
     ./config/home
   ];
 
@@ -29,6 +30,10 @@
     enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
+  };
+
+  programs.nixvim = {
+    enable = true;
   };
 
   # Create XDG Dirs
