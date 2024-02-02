@@ -1,5 +1,9 @@
 { pkgs, lib, ...}:
 
 {
-  programs.nixvim.enable = true;
+  programs.nixvim = {
+    extraPlugins = [ pkgs.vimPlugins.gruvbox ];
+    colorscheme = "gruvbox";
+  };
+  
 }
