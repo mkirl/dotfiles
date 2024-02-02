@@ -12,7 +12,7 @@
       wheel_scroll_min_lines = 1;
       window_padding_width = 6;
       confirm_os_window_close = 0;
-      background_opacity = "0.30";
+      background_opacity = "0.55";
     };
     extraConfig = ''
       foreground #${config.colorScheme.colors.base05}
