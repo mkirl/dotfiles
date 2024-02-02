@@ -11,6 +11,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
@@ -33,7 +37,7 @@
       waybarStyle = "style2";
       flakeDir = "/home/${username}/.dotfiles";      
       gitEmail = "michael.e.kirl@gmail.com";
-      theme = "catppuccin-mocha";
+      theme = "tokyo-night-storm";
       intel-bus-id = "PCI:0:2:0";
 
       pkgs = import nixpkgs {
