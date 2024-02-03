@@ -3,9 +3,6 @@
 {
   programs.nixvim = {
     enable = true;
-    extraPlugins = [ pkgs.vimPlugins.catppuccin-nvim ];
-    colorscheme = "catppuccin";
-    
     plugins = {
       treesitter = {
         enable = true;
@@ -159,6 +156,13 @@
 
       typst-vim.enable = true;
     };
+
+    colorschemes.gruvbox = {
+      enable = false;
+      contrastDark = "hard";
+    };
+    # colorscheme = "glowbeam";
+    colorscheme = "kanagawa";
 
     options = {
       mouse = "a";
@@ -397,7 +401,4 @@
       FloatBorder = { fg = "#a89984"; };
     };
   };
-
-  };
-  
 }
