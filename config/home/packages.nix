@@ -9,6 +9,7 @@
     gimp obs-studio blender-hip kdenlive rustup yarn  
     font-awesome swayidle vim pavucontrol
     element-desktop swaylock go
+    audacity
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
