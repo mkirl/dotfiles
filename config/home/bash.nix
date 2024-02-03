@@ -3,7 +3,7 @@
 {
   # Configure Bash
   programs.bash = {
-    shellInit = ''export GITHUB_TOKEN="$(cat ${.sec})"'';
+    shellInit = ''export GITHUB_TOKEN="$(cat ${~/.sec})"'';
     enable = true;
     enableCompletion = true;
     profileExtra = ''
