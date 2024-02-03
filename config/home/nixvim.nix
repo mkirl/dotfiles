@@ -1,4 +1,4 @@
-{ pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 
 {
   programs.nixvim = {
@@ -25,7 +25,7 @@
 
       lualine = {
         enable = true;
-        theme = "kanagawa";
+        theme = "catppuccin";
       };
 
       neorg = {
@@ -118,7 +118,6 @@
 
       trouble.enable = true;
 
-      copilot-cmp.enable = true;
       cmp_luasnip.enable = true;
 
       nvim-cmp = {
@@ -157,12 +156,8 @@
       typst-vim.enable = true;
     };
 
-    colorschemes.gruvbox = {
-      enable = false;
-      contrastDark = "hard";
-    };
     # colorscheme = "glowbeam";
-    colorscheme = "kanagawa";
+    colorscheme = "catppuccin";
 
     options = {
       mouse = "a";
@@ -235,7 +230,7 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-sleuth
-      kanagawa-nvim
+      catppuccin-nvim
       nvim-ts-autotag
       orgmode
       luasnip
@@ -321,11 +316,6 @@
           rev = version;
           sha256 = "0890cyxnnvbbhv1irm0nxl5x7a49h1327cmhl1gmayigd4jym7ln";
         };
-      })
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "vim-tup";
-        version = "eede19c";
-        src = inputs.vim-tup;
       })
       (pkgs.vimUtils.buildVimPlugin rec {
         pname = "vim-alloy";
