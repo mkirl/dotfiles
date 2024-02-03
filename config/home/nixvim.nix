@@ -14,6 +14,8 @@
         enable = true;
 	keymaps.addFile = "<leader>a";
       };
+      lightline.enable = true;
+
     };
 
     extraPlugins = [ pkgs.vimPlugins.catppuccin-nvim ];

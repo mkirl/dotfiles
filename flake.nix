@@ -37,7 +37,7 @@
       waybarStyle = "style2";
       flakeDir = "/home/${username}/.dotfiles";      
       gitEmail = "michael.e.kirl@gmail.com";
-      theme = "tokyo-night-storm";
+      theme = "catppuccin-mocha";
       intel-bus-id = "PCI:0:2:0";
 
       pkgs = import nixpkgs {
