@@ -29,7 +29,7 @@
       theLCVariables = "en_US.UTF-8";
       theTimezone = "America/Chicago";
       theLocale = "en_US.UTF-8";
-      gitUsername = "Michael Kirl";
+      gitUsername = "michael.e.kirl@gmail.com";
       wallpaperDir = "/home/${username}/Pictures/Wallpapers";
       wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git";
       browser = "firefox";
