@@ -1,9 +1,11 @@
 { config, pkgs, inputs, username,
-  gitUsername, gitEmail, gtkThemeFromScheme,
-  theme, browser, wallpaperDir, wallpaperGit,
-  flakeDir, waybarStyle, ... }:
-
-{
+  gtkThemeFromScheme, ... }:
+let 
+  inherit (import ./options.nix)
+    gitUsername gitEmail theme browser 
+    wallpaperDir wallpaperGit flakeDir 
+    waybarStyle;
+in {
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
@@ -16,13 +18,12 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
     ./config/home
   ];
 
   # Define Settings For Xresources
   xresources.properties = {
-    "Xcursor.size" = 36;
+    "Xcursor.size" = 24;
   };
 
   # Install & Configure Git
@@ -30,10 +31,6 @@
     enable = true;
     userName = "${gitUsername}";
     userEmail = "${gitEmail}";
-  };
-
-  programs.nixvim = {
-    enable = true;
   };
 
   # Create XDG Dirs

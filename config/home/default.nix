@@ -3,22 +3,20 @@
 {
   imports = [
     # Enable &/ Configure Programs
-    # ./style1-waybar.nix
-    ./style2-waybar.nix
-    ./swaync.nix
-    ./swaylock.nix
-    ./starship.nix
-    ./neofetch.nix
-    ./hyprland.nix
-    ./kitty.nix
-    ./rofi.nix
-    ./vim.nix
     ./bash.nix
     ./gtk-qt.nix
-    ./nixvim.nix
-
-    # Install Programs & Scripts For User
+    ./hyprland.nix
+    ./kitty.nix
+    ./neofetch.nix
     ./packages.nix
+    ./rofi.nix
+    ./starship.nix
+    ./style1-waybar.nix
+    ./style2-waybar.nix
+    ./swappy.nix
+    ./swaylock.nix
+    ./swaync.nix
+    ./nixvim.nix
 
     # Place Home Files Like Pictures
     ./files.nix

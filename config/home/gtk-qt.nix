@@ -7,7 +7,7 @@
     x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
-    size = 36;
+    size = 24;
   };
 
   # Theme GTK
@@ -25,10 +25,6 @@
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme=1;

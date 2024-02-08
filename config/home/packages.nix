@@ -1,54 +1,30 @@
-{ pkgs
-, config
-, browser
-, wallpaperDir
-, flakeDir
-, username
-, wallpaperGit
-, ...
-}:
+{ pkgs, config, username, ... }:
 
-{
+let 
+  inherit (import ../../options.nix) 
+    browser wallpaperDir wallpaperGit flakeDir;
+in {
   # Install Packages For The User
   home.packages = with pkgs; [
-    pkgs."${browser}"
-    discord
-    libvirt
-    swww
-    grim
-    slurp
-    gnome.file-roller
-    swaynotificationcenter
-    rofi-wayland
-    imv
-    transmission-gtk
-    mpv
-    gimp
-    obs-studio
-    blender-hip
-    kdenlive
-    rustup
-    yarn
-    font-awesome
-    swayidle
-    vim
-    pavucontrol
-    element-desktop
-    swaylock
-    go
-    audacity
-    anytype
+    pkgs."${browser}" discord libvirt swww grim slurp gnome.file-roller
+    swaynotificationcenter rofi-wayland imv transmission-gtk mpv
+    gimp obs-studio godot_4 rustup audacity
+    font-awesome swayidle pavucontrol
+    element-desktop swaylock wezterm
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
     (import ./../scripts/task-waybar.nix { inherit pkgs; })
     (import ./../scripts/squirtle.nix { inherit pkgs; })
-    (import ./../scripts/wallsetter.nix {
-      inherit pkgs; inherit wallpaperDir;
-      inherit username; inherit wallpaperGit;
-    })
+    (import ./../scripts/wallsetter.nix { inherit pkgs; inherit wallpaperDir;
+      inherit username; inherit wallpaperGit; })
     (import ./../scripts/themechange.nix { inherit pkgs; inherit flakeDir; })
     (import ./../scripts/theme-selector.nix { inherit pkgs; })
     (import ./../scripts/nvidia-offload.nix { inherit pkgs; })
+    (import ./../scripts/web-search.nix { inherit pkgs; })
+    (import ./../scripts/rofi-launcher.nix { inherit pkgs; })
+    (import ./../scripts/screenshootin.nix { inherit pkgs; })
   ];
+
+  programs.gh.enable = true;
 }

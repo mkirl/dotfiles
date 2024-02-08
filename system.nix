@@ -1,11 +1,15 @@
-{ inputs, config, pkgs, username,
-  hostname, gitUsername, theLocale,
-  theTimezone, wallpaperDir, wallpaperGit, 
-  theLCVariables, theKBDLayout, ... }:
+{ inputs, config, pkgs,
+  username, hostname, ... }:
 
-{
+let 
+  inherit (import ./options.nix) 
+    theLocale theTimezone gitUsername
+    wallpaperDir wallpaperGit
+    theLCVariables theKBDLayout;
+in {
   imports =
     [
+      inputs.nixvim.nixosModules.nixvim
       ./hardware.nix
       ./config/system
     ];
@@ -30,6 +34,8 @@
     LC_TELEPHONE = "${theLCVariables}";
     LC_TIME = "${theLCVariables}";
   };
+
+  console.keyMap = "${theKBDLayout}";
 
   # Define a user account.
   users.users."${username}" = {
