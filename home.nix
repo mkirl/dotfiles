@@ -33,6 +33,10 @@ in {
     userEmail = "${gitEmail}";
   };
 
+  programs.nixvim = {
+    enable = true;
+  };
+
   # Create XDG Dirs
   xdg = {
     userDirs = {
