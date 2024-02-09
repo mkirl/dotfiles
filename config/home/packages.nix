@@ -34,6 +34,9 @@ in
     anytype
     yarn
     vim
+    lld_9
+    clangStdenv
+
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
