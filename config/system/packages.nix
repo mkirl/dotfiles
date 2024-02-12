@@ -1,11 +1,6 @@
 { pkgs, config, inputs, ... }:
 
-let
-  my-python-packages = ps: with ps; [
-    pandas
-    requests
-  ];
-in {
+{
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -16,9 +11,8 @@ in {
     v4l-utils ydotool wl-clipboard socat cowsay lsd lshw
     pkg-config meson hugo gnumake ninja go nodejs symbola
     noto-fonts-color-emoji material-icons brightnessctl
-    toybox virt-viewer jetbrains.pycharm-community-bin
-    swappy ripgrep appimage-run
-    (pkgs.python3.withPackages my-python-packages)
+    toybox virt-viewer swappy ripgrep appimage-run 
+    networkmanagerapplet yad
   ];
 
   programs.steam.gamescopeSession.enable = true;
@@ -29,6 +23,7 @@ in {
     xwayland.enable = true;
   };
   
+  programs.fuse.userAllowOther = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;

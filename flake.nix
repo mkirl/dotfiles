@@ -15,13 +15,13 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, impermanence, ... }:
     let
       system = "x86_64-linux";
-      username = "mike";
-      hostname = "nixos";
+      inherit (import ./options.nix) username hostname;
 
       pkgs = import nixpkgs {
         inherit system;
@@ -39,6 +39,7 @@
           };
           modules = [
             ./system.nix
+            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = {

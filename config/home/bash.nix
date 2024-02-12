@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-let inherit (import ../../options.nix) flakeDir; in
-{
+let inherit (import ../../options.nix) flakeDir theShell; in
+lib.mkIf (theShell == "bash") {
   # Configure Bash
   programs.bash = {
     enable = true;
@@ -17,20 +17,18 @@ let inherit (import ../../options.nix) flakeDir; in
         source $HOME/.bashrc-personal
       fi
     '';
-    sessionVariables = {
-    
-    };
+    sessionVariables = { };
     shellAliases = {
-      sv="sudo vim";
-      flake-rebuild="sudo nixos-rebuild switch --flake ${flakeDir}";
-      flake-update="sudo nix flake update ${flakeDir}";
-      gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-      v="nvim";
-      ls="lsd";
-      ll="lsd -l";
-      la="lsd -a";
-      lal="lsd -al";
-      ".."="cd ..";
+      sv = "sudo nvim";
+      flake-rebuild = "sudo nixos-rebuild switch --flake ${flakeDir}";
+      flake-update = "sudo nix flake update ${flakeDir}";
+      gcCleanup = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+      v = "nvim";
+      ls = "lsd";
+      ll = "lsd -l";
+      la = "lsd -a";
+      lal = "lsd -al";
+      ".." = "cd ..";
     };
   };
 }

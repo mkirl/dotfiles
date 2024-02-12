@@ -6,23 +6,23 @@ let
   inherit (import ../../options.nix) 
     browser cpuType gpuType
     wallpaperDir borderAnim
-    theKBDLayout
-    theSecondKBDLayout;
+    theKBDLayout terminal
+    theSecondKBDLayout sdl-videodriver;
 in with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
-      hyprplugins.hyprtrails
+      # hyprplugins.hyprtrails
     ];
     extraConfig = let
       modifier = "SUPER";
     in concatStrings [ ''
       monitor=,preferred,auto,1
       windowrule = float, ^(steam)$
-      windowrule = center, ^(steam)$
       windowrule = size 1080 900, ^(steam)$
+      windowrule = center, ^(steam)$
       general {
         gaps_in = 6
         gaps_out = 8
@@ -51,7 +51,7 @@ in with lib; {
       env = XDG_SESSION_DESKTOP, Hyprland
       env = GDK_BACKEND, wayland
       env = CLUTTER_BACKEND, wayland
-      env = SDL_VIDEODRIVER, wayland
+      env = SDL_VIDEODRIVER, ${sdl-videodriver}
       env = XCURSOR_SIZE, 24
       env = XCURSOR_THEME, Bibata-Modern-Ice
       env = QT_QPA_PLATFORM, wayland
@@ -117,6 +117,7 @@ in with lib; {
       exec-once = waybar
       exec-once = swaync
       exec-once = wallsetter
+      exec-once = nm-applet --indicator
       exec-once = swayidle -w timeout 720 'swaylock -f' timeout 800 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f -c 000000'
       dwindle {
         pseudotile = true
@@ -125,11 +126,15 @@ in with lib; {
       master {
         new_is_master = true
       }
-      bind = ${modifier},Return,exec,kitty
+      bind = ${modifier},Return,exec,${terminal}
       bind = ${modifier}SHIFT,Return,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,S,exec,swaync-client -rs
-      bind = ${modifier},W,exec,${browser}
+      ${if browser == "google-chrome" then ''
+	bind = ${modifier},W,exec,google-chrome-stable
+      '' else ''
+	bind = ${modifier},W,exec,${browser}
+      ''}
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
       bind = ${modifier},D,exec,discord
@@ -180,6 +185,8 @@ in with lib; {
       bind = ${modifier}SHIFT,8,movetoworkspace,8
       bind = ${modifier}SHIFT,9,movetoworkspace,9
       bind = ${modifier}SHIFT,0,movetoworkspace,10
+      bind = ${modifier}CONTROL,right,workspace,e+1
+      bind = ${modifier}CONTROL,left,workspace,e-1
       bind = ${modifier},mouse_down,workspace, e+1
       bind = ${modifier},mouse_up,workspace, e-1
       bindm = ${modifier},mouse:272,movewindow
@@ -188,6 +195,7 @@ in with lib; {
       bind = ALT,Tab,bringactivetotop
       bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bind = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+      binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
     '' ];

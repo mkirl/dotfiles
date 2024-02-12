@@ -21,22 +21,17 @@ in
     mpv
     gimp
     obs-studio
-    godot_4
     rustup
     audacity
-    font-awesome
-    swayidle
     pavucontrol
+    yarn
+    go
+    font-awesome
+    spotify
+    swayidle
+    neovide
     element-desktop
     swaylock
-    wezterm
-    go
-    anytype
-    yarn
-    vim
-    lld_9
-    clangStdenv
-
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # Import Scripts
     (import ./../scripts/emopicker9000.nix { inherit pkgs; })
@@ -52,6 +47,7 @@ in
     (import ./../scripts/web-search.nix { inherit pkgs; })
     (import ./../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ./../scripts/screenshootin.nix { inherit pkgs; })
+    (import ./../scripts/zcc.nix { inherit pkgs; })
   ];
 
   programs.gh.enable = true;

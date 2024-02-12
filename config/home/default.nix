@@ -3,19 +3,22 @@
 {
   imports = [
     # Enable &/ Configure Programs
+    ./alacritty.nix
     ./bash.nix
     ./gtk-qt.nix
     ./hyprland.nix
+    ./kdenlive.nix
     ./kitty.nix
     ./neofetch.nix
     ./packages.nix
     ./rofi.nix
     ./starship.nix
-    ./style1-waybar.nix
-    ./style2-waybar.nix
+    ./waybar.nix
     ./swappy.nix
     ./swaylock.nix
     ./swaync.nix
+    ./wezterm.nix
+    ./zsh.nix
     ./nixvim.nix
 
     # Place Home Files Like Pictures
