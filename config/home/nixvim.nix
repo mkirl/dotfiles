@@ -173,7 +173,7 @@
       smartcase = true;
       ignorecase = true;
 
-      undodir = "/home/pta2002/.cache/nvim/undodir";
+      undodir = "/home/${username}/.cache/nvim/undodir";
       undofile = true;
 
       showmode = false;
