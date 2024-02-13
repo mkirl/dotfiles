@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 
+let
+  inherit (import ../../options.nix) username;
+in
+with lib;
 {
   programs.nixvim = {
     enable = true;
