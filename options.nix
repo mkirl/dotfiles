@@ -5,14 +5,9 @@
 let
   username = "mike";
   hostname = "nixos";
-  # This is for running NixOS
-  # On a tmpfs or root on RAM
-  # You Most Like Want This -> false
-  impermanence = false;
   userHome = "/home/${username}";
-  flakeDir =
-    if impermanence == false then "${userHome}/.dotfiles"
-    else "/nix/persist/etc/nixos/kirlos";
+  flakeDir = "${userHome}/.dotfiles";
+  waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in
 {
   # User Variables
@@ -21,26 +16,30 @@ in
   gitUsername = "michael.e.kirl@gmail.com";
   gitEmail = "michael.e.kirl@gmail.com";
   theme = "gigavolt";
-  slickbar = true;
-  simplebar = false; # DO NOT ENABLE!
+  slickbar = if waybarStyle == "slickbar" then true else false;
+  simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
   browser = "firefox";
-  wallpaperGit = "https://gitlab.com/mkirl/wallpaper-collection.git"; # This will give you my wallpapers
+  wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git"; # This will give you my wallpapers
   # ^ (use as is or replace with your own repo - removing will break the wallsetter script) 
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  terminal = "alacritty";
+  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
 
   # System Settings
   clock24h = true;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
-  theSecondKBDLayout = "pl";
+  theSecondKBDLayout = "de";
+  theKBDVariant = "";
   theLCVariables = "en_US.UTF-8";
   theTimezone = "America/Chicago";
   theShell = "bash"; # Possible options: bash, zsh
   theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
+  # This is for running NixOS
+  # On a tmpfs or root on RAM
+  # You Most Like Want This -> false
   impermanence = false; # This should be set to false unless you know what your doing!
   sdl-videodriver = "wayland"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia

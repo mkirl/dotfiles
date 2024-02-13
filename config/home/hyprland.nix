@@ -7,7 +7,8 @@ let
     browser cpuType gpuType
     wallpaperDir borderAnim
     theKBDLayout terminal
-    theSecondKBDLayout sdl-videodriver;
+    theSecondKBDLayout
+    theKBDVariant sdl-videodriver;
 in with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -34,7 +35,7 @@ in with lib; {
       }
 
       input {
-        kb_layout = ${theKBDLayout},${theSecondKBDLayout}
+        kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
 	kb_options = grp:alt_shift_toggle
         kb_options=caps:super
         follow_mouse = 1
@@ -142,7 +143,7 @@ in with lib; {
       bind = ${modifier},G,exec,gimp
       bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier},T,exec,thunar
-      bind = ${modifier},M,exec,ario
+      bind = ${modifier},M,exec,spotify
       bind = ${modifier},Q,killactive,
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
