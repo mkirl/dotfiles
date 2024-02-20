@@ -2,7 +2,7 @@
 
 let
   palette = config.colorScheme.palette;
-  inherit (import ../../options.nix) slickbar simplebar clock24h;
+  inherit (import ../../options.nix) slickbar slickbar-num simplebar clock24h;
 in with lib; {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -13,14 +13,15 @@ in with lib; {
       position = "top";
 
       modules-center = if simplebar == true then [ "hyprland/window" ] 
-      else [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
-      modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "network"  ]
+      else [ "custom/hyprbindings" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
+      modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "custom/hyprbindings"  ]
       else [ "custom/startmenu" "hyprland/window" ];
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
       else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
       "hyprland/workspaces" = {
-      	format = if simplebar == true then "{name}" else "{icon}";
+      	format = if simplebar == true ||
+		    slickbar-num == true then "{name}" else "{icon}";
       	format-icons = {
           default = " ";
           active = " ";
@@ -79,7 +80,7 @@ in with lib; {
           car = "";
           default = ["" "" ""];
         };
-        on-click = "pavucontrol";
+        on-click = "sleep 0.1 && pavucontrol";
       };
       "custom/themeselector" = {
         tooltip = false;
@@ -91,7 +92,12 @@ in with lib; {
         tooltip = false;
         format = " ";
         # exec = "rofi -show drun";
-        on-click = "rofi-launcher";
+        on-click = "sleep 0.1 && rofi-launcher";
+      };
+      "custom/hyprbindings" = {
+        tooltip = false;
+        format = " Bindings";
+        on-click = "sleep 0.1 && list-hypr-bindings";
       };
       "idle_inhibitor" = {
         format = "{icon}";
@@ -117,7 +123,7 @@ in with lib; {
         return-type = "json";
         exec-if = "which swaync-client";
         exec = "swaync-client -swb";
-        on-click = "task-waybar";
+        on-click = "sleep 0.1 && task-waybar";
         escape = true;
       };
       "battery" = {
@@ -140,7 +146,7 @@ in with lib; {
     	font-weight: bold;
       }
       window#waybar {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background-color: rgba(26,27,38,0);
 	  border-bottom: 1px solid rgba(26,27,38,0);
 	  border-radius: 0px;
@@ -158,7 +164,7 @@ in with lib; {
 	''}
       }
       #workspaces {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: linear-gradient(180deg, #${palette.base00}, #${palette.base01});
 	  margin: 5px;
 	  padding: 0px 1px;
@@ -183,7 +189,7 @@ in with lib; {
 	''}
       }
       #workspaces button {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  padding: 0px 5px;
 	  margin: 4px 3px;
 	  border-radius: 15px;
@@ -210,7 +216,7 @@ in with lib; {
 	''}
       }
       #workspaces button.active {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  padding: 0px 5px;
 	  margin: 4px 3px;
 	  border-radius: 15px;
@@ -239,7 +245,7 @@ in with lib; {
 	''}
       }
       #workspaces button:hover {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  border-radius: 15px;
 	  color: #${palette.base00};
 	  background: linear-gradient(45deg, #${palette.base0D}, #${palette.base0E});
@@ -266,7 +272,7 @@ in with lib; {
 	color: #${palette.base07};
       }
       #window {
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  color: #${palette.base05};
 	  background: #${palette.base00};
 	  border-radius: 50px 15px 50px 15px;
@@ -286,7 +292,7 @@ in with lib; {
       }
       #memory {
    	color: #${palette.base0F};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -304,7 +310,7 @@ in with lib; {
       }
       #clock {
     	color: #${palette.base0B};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -322,7 +328,7 @@ in with lib; {
       }
       #idle_inhibitor {
     	color: #${palette.base0A};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 50px 15px 50px 15px;
 	  margin: 5px;
@@ -340,7 +346,7 @@ in with lib; {
       }
       #cpu {
     	color: #${palette.base07};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 50px 15px 50px 15px;
 	  margin: 5px;
@@ -358,7 +364,7 @@ in with lib; {
       }
       #disk {
     	color: #${palette.base03};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -376,7 +382,7 @@ in with lib; {
       }
       #battery {
     	color: #${palette.base08};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -394,7 +400,25 @@ in with lib; {
       }
       #network {
     	color: #${palette.base09};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
+	  background: #${palette.base00};
+	  border-radius: 50px 15px 50px 15px;
+	  margin: 5px;
+	  padding: 2px 20px;
+	'' else if simplebar == true then ''
+	  color: #${config.colorScheme.colors.base05};
+          background: transparent;   
+	  margin: 4px;
+	'' else ''
+	  background: #${palette.base01};
+	  margin: 4px;
+	  padding: 2px 10px;
+	  border-radius: 10px;
+	''}
+      }
+      #custom-hyprbindings {
+    	color: #${palette.base0E};
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 50px 15px 50px 15px;
 	  margin: 5px;
@@ -412,7 +436,7 @@ in with lib; {
       }
       #tray {
     	color: #${palette.base05};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 0px 0px 50px;
 	  margin: 5px 0px 5px 5px;
@@ -430,7 +454,7 @@ in with lib; {
       }
       #pulseaudio {
     	color: #${palette.base0D};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 50px 15px 50px 15px;
 	  margin: 5px;
@@ -448,7 +472,7 @@ in with lib; {
       }
       #custom-notification {
     	color: #${palette.base0C};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -466,7 +490,7 @@ in with lib; {
       }
       #custom-themeselector {
     	color: #${palette.base0D};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;
@@ -484,7 +508,7 @@ in with lib; {
       }
       #custom-startmenu {
     	color: #${palette.base03};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 0px 15px 50px 0px;
 	  margin: 5px 5px 5px 0px;
@@ -502,7 +526,7 @@ in with lib; {
       }
       #idle_inhibitor {
     	color: #${palette.base09};
-	${if slickbar == true then ''
+	${if slickbar == true || slickbar-num == true then ''
 	  background: #${palette.base00};
 	  border-radius: 15px 50px 15px 50px;
 	  margin: 5px;

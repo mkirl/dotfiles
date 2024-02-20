@@ -1,17 +1,11 @@
-{ config
-, pkgs
-, inputs
-, username
-, gtkThemeFromScheme
-, ...
-}:
-let
+{ config, pkgs, inputs, username,
+  gtkThemeFromScheme, ... }:
+let 
   inherit (import ./options.nix)
-    gitUsername gitEmail theme browser
-    wallpaperDir wallpaperGit flakeDir
+    gitUsername gitEmail theme browser 
+    wallpaperDir wallpaperGit flakeDir 
     waybarStyle;
-in
-{
+in {
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
@@ -23,8 +17,8 @@ in
   # Import Program Configurations
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.hyprland.homeManagerModules.default
     ./config/home
   ];
 
@@ -43,15 +37,15 @@ in
   # Create XDG Dirs
   xdg = {
     userDirs = {
-      enable = true;
-      createDirectories = true;
+        enable = true;
+        createDirectories = true;
     };
   };
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 

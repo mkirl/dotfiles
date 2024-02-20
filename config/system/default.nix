@@ -7,6 +7,7 @@
     ./autorun.nix
     ./boot.nix
     ./displaymanager.nix
+    ./distrobox.nix
     ./flatpak.nix
     ./hwclock.nix
     ./intel-amd.nix
@@ -14,12 +15,10 @@
     ./intel-nvidia.nix
     ./kernel.nix
     ./logitech.nix
-    ./neovim.nix
     ./nfs.nix
     ./ntp.nix
     ./nvidia.nix
     ./packages.nix
-    ./persistence.nix
     ./polkit.nix
     ./python.nix
     ./printer.nix

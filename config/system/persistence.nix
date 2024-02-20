@@ -1,8 +1,9 @@
 { config, pkgs, lib, username, ... }:
 
-let
-  inherit (import ../../options.nix) impermanence;
-in lib.mkIf (impermanence == true) {
+let 
+  inherit ( import ../../options.nix ) username;
+in
+{
   environment.persistence."/nix/persist" = {
     hideMounts = true;
     directories = [
@@ -26,6 +27,9 @@ in lib.mkIf (impermanence == true) {
 	".mozilla"
 	".cache"
 	".ssh"
+	".config/discord"
+	".config/obs-studio"
+	".steam"
       ];
       files = [
       ];

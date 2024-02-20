@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let inherit (import ../../options.nix) flakeDir theShell; in
+let inherit (import ../../options.nix) flakeDir flakePrev 
+	     hostname flakeBackup theShell; in
 lib.mkIf (theShell == "bash") {
   # Configure Bash
   programs.bash = {
@@ -17,18 +18,23 @@ lib.mkIf (theShell == "bash") {
         source $HOME/.bashrc-personal
       fi
     '';
-    sessionVariables = { };
+    sessionVariables = {
+      ZANEYOS = true;
+      FLAKEBACKUP = "${flakeBackup}";
+      FLAKEPREV = "${flakePrev}";
+    };
     shellAliases = {
-      sv = "sudo nvim";
-      flake-rebuild = "sudo nixos-rebuild switch --flake ${flakeDir}";
-      flake-update = "sudo nix flake update ${flakeDir}";
-      gcCleanup = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
-      v = "nvim";
-      ls = "lsd";
-      ll = "lsd -l";
-      la = "lsd -a";
-      lal = "lsd -al";
-      ".." = "cd ..";
+      sv="sudo nvim";
+      flake-rebuild="nh os switch --nom --hostname ${hostname}";
+      flake-update="nh os switch --nom --hostname ${hostname} --update";
+      gcCleanup="nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+      v="nvim";
+      ls="lsd";
+      ll="lsd -l";
+      la="lsd -a";
+      lal="lsd -al";
+      ".."="cd ..";
+      neofetch="neofetch --ascii ~/.config/ascii-neofetch";
     };
   };
 }

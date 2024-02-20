@@ -7,12 +7,14 @@ let
   hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/.dotfiles";
-  waybarStyle = "slickbar"; # simplebar, slickbar, or default
+  waybarStyle = "slickbar-num"; # simplebar, slickbar, or default
 in
 {
   # User Variables
   username = "${username}";
   hostname = "${hostname}";
+  userHome = "/home/${username}";
+
   gitUsername = "michael.e.kirl@gmail.com";
   gitEmail = "michael.e.kirl@gmail.com";
   theme = "gigavolt";
@@ -27,6 +29,8 @@ in
   flakeDir = "${flakeDir}";
   terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
 
+  flakePrev = "${userHome}/.kirlos-previous";
+  flakeBackup = "${userHome}/.kirlos-backup";
   # System Settings
   clock24h = true;
   theLocale = "en_US.UTF-8";

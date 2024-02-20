@@ -5,11 +5,11 @@ let
   inherit (import ./options.nix) 
     theLocale theTimezone gitUsername
     theShell wallpaperDir wallpaperGit
-    theLCVariables theKBDLayout;
+    theLCVariables theKBDLayout flakeDir
+    theme;
 in {
   imports =
     [
-      inputs.nixvim.nixosModules.nixvim
       ./hardware.nix
       ./config/system
     ];
@@ -53,6 +53,7 @@ in {
   };
 
   environment.variables = {
+    FLAKE = "${flakeDir}";
     POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 
