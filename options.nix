@@ -1,24 +1,24 @@
 # PLEASE READ THE WIKI FOR DETERMINING
-# VALUES FOR THIS PAGE. 
+# WHAT TO PUT HERE AS OPTIONS. 
 # https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
 
 let
+  # THINGS YOU NEED TO CHANGE
   username = "mike";
   hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/.dotfiles";
-  waybarStyle = "slickbar-num"; # simplebar, slickbar, or default
+  waybarStyle = "slickbar-num"; # simplebar, slickbar, slickbar-num, or default
 in
 {
   # User Variables
   username = "${username}";
   hostname = "${hostname}";
-  userHome = "/home/${username}";
-
   gitUsername = "michael.e.kirl@gmail.com";
   gitEmail = "michael.e.kirl@gmail.com";
-  theme = "gigavolt";
+  theme = "catppuccin-mocha";
   slickbar = if waybarStyle == "slickbar" then true else false;
+  slickbar-num = if waybarStyle == "slickbar-num" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
   borderAnim = true;
   browser = "firefox";
@@ -27,12 +27,12 @@ in
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
-
   flakePrev = "${userHome}/.kirlos-previous";
   flakeBackup = "${userHome}/.kirlos-backup";
+  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+
   # System Settings
-  clock24h = true;
+  clock24h = false;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
   theSecondKBDLayout = "de";
@@ -41,10 +41,6 @@ in
   theTimezone = "America/Chicago";
   theShell = "bash"; # Possible options: bash, zsh
   theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
-  # This is for running NixOS
-  # On a tmpfs or root on RAM
-  # You Most Like Want This -> false
-  impermanence = false; # This should be set to false unless you know what your doing!
   sdl-videodriver = "wayland"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
@@ -70,6 +66,7 @@ in
   printer = false;
 
   # Enable Flatpak & Larger Programs
+  distrobox = false;
   flatpak = true;
   kdenlive = false;
   blender = false;
