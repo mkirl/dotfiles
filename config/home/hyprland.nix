@@ -79,7 +79,6 @@ with lib; {
                 misc {
                   mouse_move_enables_dpms = true
                   key_press_enables_dpms = false
-                  diable_hyperland_logo = true
                 }
                 animations {
                   enabled = yes
