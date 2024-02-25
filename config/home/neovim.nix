@@ -49,11 +49,11 @@ in {
     plugins = {
       barbecue.enable = true;
       gitsigns.enable = true;
-      toggleterm.enable = true;
       telescope = {
 	enable = true;
 	keymaps = {
 	  "<leader>ff" = "find_files";
+	  "<leader>lg" = "live_grep";
 	};
       };
       neo-tree.enable = true;
@@ -68,22 +68,6 @@ in {
       startup = { 
 	enable = true;
 	theme = "dashboard";
-      };
-      lint = {
-        enable = true;
-        lintersByFt = {
-          text = ["vale"];
-          json = ["jsonlint"];
-          markdown = ["vale"];
-          rst = ["vale"];
-          ruby = ["ruby"];
-          janet = ["janet"];
-          inko = ["inko"];
-          clojure = ["clj-kondo"];
-          dockerfile = ["hadolint"];
-          terraform = ["tflint"];
-          typscriptreact = ["prettier_eslint"];
-        };
       };
       lsp = {
 	enable = true;
@@ -198,8 +182,6 @@ in {
     extraConfigVim = ''
       set noshowmode
       inoremap jj <ESC>
-      nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-      inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
     '';
 
     keymaps = [

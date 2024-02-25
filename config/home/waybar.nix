@@ -17,7 +17,7 @@ in with lib; {
       modules-left = if simplebar == true then ["custom/startmenu" "hyprland/workspaces" "cpu" "memory" "custom/hyprbindings"  ]
       else [ "custom/startmenu" "hyprland/window" ];
       modules-right = if simplebar == true then [ "idle_inhibitor" "custom/themeselector" "custom/notification" "pulseaudio" "clock"  "tray" ]
-      else [ "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
+      else [ "custom/exit" "idle_inhibitor" "custom/themeselector" "custom/notification" "battery" "tray" ];
 
       "hyprland/workspaces" = {
       	format = if simplebar == true ||
@@ -85,8 +85,12 @@ in with lib; {
       "custom/themeselector" = {
         tooltip = false;
         format = "";
-        # exec = "theme-selector";
         on-click = "sleep 0.1 && theme-selector";
+      };
+      "custom/exit" = {
+        tooltip = false;
+        format = "";
+        on-click = "sleep 0.1 && wlogout";
       };
       "custom/startmenu" = {
         tooltip = false;
@@ -541,6 +545,24 @@ in with lib; {
 	  padding: 2px 10px;
 	  border-radius: 10px;
 	''}
+      }
+      #custom-exit {
+    	color: #${palette.base0E};
+	${if slickbar == true || slickbar-num == true then ''
+	  background: #${palette.base00};
+	  border-radius: 15px 50px 15px 50px;
+	  margin: 5px;
+	  padding: 2px 20px;
+	'' else if simplebar == true then ''
+	  color: #${config.colorScheme.colors.base05};
+          background: transparent;   
+	  margin: 4px;
+	'' else ''
+	  background: #${palette.base01};
+	  margin: 4px;
+	  padding: 2px 10px;
+	  border-radius: 10px;
+        ''}
       } ''
     ];
   };

@@ -1,22 +1,71 @@
-# ZaneyOS 🟰 Best ❄️ NixOS Configs
+<div align="center">
 
-ZaneyOS is a way of reproducing my configuration on any NixOS system. This includes the wallpaper, scripts, applications, config files, and more. *Please remember to change username and hostname in flake.nix.*
+## ZaneyOS 🟰 Best ❄️ NixOS Configs
 
-![](./config/home/files/media/demo.jpg)
+ZaneyOS is a simple way of reproducing my configuration on any NixOS system. This includes the wallpaper, scripts, applications, config files, and more.
 
-## READ THE WIKI
+<img align="center" width="80%" src="https://gitlab.com/Zaney/zaneyos/-/raw/main/config/home/files/media/demo.jpg" />
 
-If you want to learn more about my system, [this project has a Wiki](https://gitlab.com/Zaney/zaneyos/-/wikis/home) that explains a ton. It even explains what NixOS is why you may want to choose it and so much more.
+</div>
 
-# Install / Steps To Reproduce My System
+> **This project has a [Wiki](https://gitlab.com/Zaney/zaneyos/-/wikis/home). Please read it to find out information on subjects that you may need to learn more about!**
+> **I have put a lot of effort into the documentation so it should be accurate. However, please if you notice that something is wrong with it create an issue or reach out to me on Discord.**
 
-- Run this command to ensure Git is installed:
+#### 🍖 Requirements
+- You must be running on NixOS.
+- Must have installed using GPT & UEFI.
+- Change settings through script or manually editing options.nix file.
+
+#### 🎹 Pipewire, Spotify, & Notification Menu Controls
+- We are using the latest and greatest audio solution for Linux. If you like listening to music Spotify comes pre-installed out of the box. Not to mention you will have media and volume controls in the notification center available in the top bar.
+
+#### 🏇 Optimized Workflow, tmpfs For Speed, & Simple Yet Elegant Neovim
+- Using scratchpads with Hyprland for increased functionality and effeciency.
+- A tmpfs for the /tmp directory is created improving rebuild time and reducing strain on hdd/ssd.
+- No massive Neovim project here. This is my simple, easy to understand, yet incredible Neovim setup. You can grep recursively through entire folders and find specific files without ever leaving the text editor!
+
+<div align="center">
+
+![](./config/home/files/media/demo.mp4)
+
+Please do yourself a favor and [read the wiki](https://gitlab.com/Zaney/zaneyos/-/wikis/home).
+
+</div>
+
+#### 📦 How To Install Packages?
+- You can search the [Nix Packages](https://search.nixos.org/packages?) & [Options](https://search.nixos.org/options?) pages for what a package may be named or if it has options available that take care of configuration hurdles you may face.
+- To add a package there are the packages.nix files located in config/system and config/home folders. One is for programs available system wide and the other for your users environment only.
+
+#### 🙋 Having Issues / Questions?
+- Please feel free to raise an issue on the repo, please label a feature request with the title beginning with [feature request], thank you!
+- Contact me on [Discord](https://discord.gg/2cRdBs8) as well, for a potentially faster response.
+
+#### ⚠️ Important Changes!
+- **The stable branch is gone, this means this project changes as my system changes. This will help with managing documentation. From now on before updating the repository please ensure the flake is not in maintenance mode. If an announcement has not been made on top of this page and Discord then its safe to pull and use the repository.**
+- **Impermanence/persistence has been moved to only being sourced inside the hardware.nix file. If you want to use this feature then please read the Wiki page about how to implement it.**
+
+### ⬇️ Install
+
+#### 📜 Script:
+
+This is the easiest and recommended way of starting out. The script is not meant to allow you to change every option that you can in the flake or help you install extra packages. It is simply here so you can get my configuration installed with as little chances of breakages and then fiddle to your hearts content!
+
+Simply copy this and run it:
 
 ```
-nix-shell -p git vim 
+nix-shell -p git curl
+sh <(curl -L https://gitlab.com/Zaney/zaneyos/-/raw/main/install-zaneyos.sh)
 ```
 
-- Clone this repo & enter it:
+#### 🦽 Manual:
+
+Run this command to ensure Git & Vim are installed:
+
+```
+nix-shell -p git vim
+```
+
+Clone this repo & enter it:
 
 ```
 git clone https://gitlab.com/zaney/zaneyos.git
@@ -25,27 +74,20 @@ cd zaneyos
 
 - *You should stay in this folder for the rest of the install*
 
-**If you want to run a stable release you will need to run a command like this:**
+**🪧🪧🪧 Edit options.nix 🪧🪧🪧**
 
-```
-git switch stable-1.0
-```
-
-- Change any options in options.nix as needed.
-- Generate your hardware.nix like so:
+Generate your hardware.nix like so:
 
 ```
 nixos-generate-config --show-hardware-config > hardware.nix
 ```
 
-- Run this to enable flakes and install the flake:
+Run this to enable flakes and install the flake replacing hostname with whatever you put in the options.nix file:
 
 ```
 NIX_CONFIG="experimental-features = nix-command flakes" 
-sudo nixos-rebuild switch --flake .#thehostnameyousetinoptions.nix
+sudo nixos-rebuild switch --flake .#hostname
 ```
-
-### You Are Done!
 
 This Flake's user will have the password be set for them as *password*. If you want to change it run a command replacing password with whatever you want to be your password. You then need to copy the output that it gives you like below into your hashedPassword in the system.nix file.
 
