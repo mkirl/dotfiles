@@ -29,7 +29,7 @@ in
   flakeDir = "${flakeDir}";
   flakePrev = "${userHome}/.kirlos-previous";
   flakeBackup = "${userHome}/.kirlos-backup";
-  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  terminal = "wezterm"; # This sets the terminal that is used by the hyprland terminal keybinding
 
   # System Settings
   clock24h = false;
@@ -84,4 +84,6 @@ in
   # Enable Python & PyCharm
   python = false;
 
+  # Enable SyncThing
+  syncthing = true;
 }
