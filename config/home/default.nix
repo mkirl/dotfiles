@@ -10,7 +10,6 @@
     ./kdenlive.nix
     ./kitty.nix
     ./neofetch.nix
-    ./neovim.nix
     ./packages.nix
     ./rofi.nix
     ./starship.nix
@@ -21,6 +20,7 @@
     ./swaync.nix
     ./wezterm.nix
     ./zsh.nix
+    ./nixvim.nix
 
     # Place Home Files Like Pictures
     ./files.nix
