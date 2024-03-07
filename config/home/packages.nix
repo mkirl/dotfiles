@@ -31,7 +31,6 @@ in
     swaylock
     anytype
     docker
-    warp-terminal
     vscode-fhs
 
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
