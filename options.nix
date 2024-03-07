@@ -8,18 +8,18 @@ let
   hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/.dotfiles";
-  waybarStyle = "slickbar-num"; # simplebar, slickbar, slickbar-num, or default
+  waybarStyle = "slickbar"; # simplebar, slickbar, or default
 in
 {
   # User Variables
-  username = "${username}";
-  hostname = "${hostname}";
+  username = "mike";
+  hostname = "nixos";
   gitUsername = "michael.e.kirl@gmail.com";
   gitEmail = "michael.e.kirl@gmail.com";
-  theme = "catppuccin-mocha";
+  theme = "atelier-cave";
   slickbar = if waybarStyle == "slickbar" then true else false;
-  slickbar-num = if waybarStyle == "slickbar-num" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
+  bar-number = true; # Enable / Disable Workspace Numbers In Waybar
   borderAnim = true;
   browser = "firefox";
   wallpaperGit = "https://github.com/mkirl/wallpaper-collection.git"; # This will give you my wallpapers
@@ -27,12 +27,12 @@ in
   wallpaperDir = "${userHome}/Pictures/Wallpapers";
   screenshotDir = "${userHome}/Pictures/Screenshots";
   flakeDir = "${flakeDir}";
-  flakePrev = "${userHome}/.kirlos-previous";
-  flakeBackup = "${userHome}/.kirlos-backup";
-  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  flakePrev = "${userHome}/.nixos-previous";
+  flakeBackup = "${userHome}/.nixos-backup";
+  terminal = "kitty"; # This sets the terminal that is used by the hyprland terminal keybinding
 
   # System Settings
-  clock24h = false;
+  clock24h = true;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
   theSecondKBDLayout = "de";
@@ -40,7 +40,7 @@ in
   theLCVariables = "en_US.UTF-8";
   theTimezone = "America/Chicago";
   theShell = "bash"; # Possible options: bash, zsh
-  theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
+  theKernel = "zen"; # Possible options: default, latest, lqx, xanmod, zen
   sdl-videodriver = "wayland"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
@@ -78,12 +78,13 @@ in
   # Enable Terminals
   # If You Disable All You Get Kitty
   wezterm = false;
-  alacritty = true;
-  kitty = false;
+  alacritty = false;
+  kitty = true;
 
   # Enable Python & PyCharm
   python = false;
 
   # Enable SyncThing
-  syncthing = true;
+  syncthing = false;
+
 }

@@ -20,10 +20,9 @@ in with lib; {
     extraConfig = let
       modifier = "SUPER";
     in concatStrings [ ''
-      monitor=,preferred,auto,1.333333
-      windowrule = float, ^(steam)$
-      windowrule = size 1080 900, ^(steam)$
-      windowrule = center, ^(steam)$
+      monitor=,preferred,auto,1.3333
+      windowrule = fullscreen, ^(wlogout)$
+      windowrule = animation fade,^(wlogout)$
       general {
         gaps_in = 6
         gaps_out = 8
@@ -72,8 +71,9 @@ in with lib; {
       }
       misc {
         mouse_move_enables_dpms = true
-        key_press_enables_dpms = false
         disable_hyprland_logo = true
+        key_press_enables_dpms = false
+
       }
       animations {
         enabled = yes
