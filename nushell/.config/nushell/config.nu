@@ -1,5 +1,5 @@
 # Set XDG path for Nushell
-$env.XDG_CONFIG_HOME = $"($env.HOME)/.config"
+$env.XDG_CONFIG_HOME = $"($nu.home-path)/.config"
 
 # Starship configuration
 $env.STARSHIP_SHELL = "nu"
