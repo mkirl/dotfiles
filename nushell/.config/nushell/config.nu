@@ -7,5 +7,4 @@ $env.PROMPT_COMMAND = { || starship prompt }
 $env.PROMPT_COMMAND_RIGHT = { || "" }
 
 # Carapace completion
-use carapace
 carapace connect nushell
