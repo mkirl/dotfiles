@@ -230,7 +230,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
-vim.o.shell = "/nix/store/5dhhjkjwpx7bf1m1wh76ngsqzbr5dp5k-fish-3.7.1/bin/fish"
+vim.o.shell = "fish"
 
 -- Initialize LSP
 local lsp_zero = require('lsp-zero')
@@ -347,3 +347,10 @@ require('nvim-treesitter.configs').setup({
     enable = true,
   },
 })
+
+-- After the telescope plugin installation, add these keymaps:
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffers" })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help" })
