@@ -57,11 +57,11 @@ preset = 'qwerty'
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 4
-inner.vertical =   0
-outer.left =       4
+inner.vertical =   4
+outer.left =       0
 outer.bottom =     0
 outer.top =        0
-outer.right =      4
+outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -87,8 +87,8 @@ outer.right =      4
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
 # alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
+# tell application "kitty"
+#     do script ""
 #     activate
 # end tell'
 # '''
@@ -120,6 +120,7 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
+alt-t = 'workspace T'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -128,7 +129,7 @@ alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
-
+alt-shift-t = 'move-node-to-workspace T'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -157,12 +158,10 @@ down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
-# Workspace k
-alt-k = 'workspace k'
-alt-shift-k = 'move-node-to-workspace k'
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = "move-node-to-workspace T"
 
-[workspace-to-monitor-force-assignment]
-'k' = { monitor = 'main' }
-
-[window-workspace-rules]
-'app.bundle-identifier = "net.kovidgoyal.kitty"' = { workspace = 'k' }
+[[on-window-detected]]
+if.app-id = 'Discord'
+run = 'move-node-to-workspace 6'
