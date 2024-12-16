@@ -1,1 +1,37 @@
-/nix/store/gf3464nkxcc7gj9id0yn59fqb44k7p2f-home-manager-files/.config/zellij/config.kdl
+// Zellij config
+keybinds {
+    normal {
+        // Pane keybindings
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        
+        // Tab keybindings (Super = Cmd on macOS, Windows/Super key on Linux)
+        bind "Super 1" { GoToTab 1; }
+        bind "Super 2" { GoToTab 2; }
+        bind "Super 3" { GoToTab 3; }
+        bind "Super 4" { GoToTab 4; }
+        bind "Super 5" { GoToTab 5; }
+        
+        // Split panes
+        bind "Alt |" { NewPane "Right"; }
+        bind "Alt -" { NewPane "Down"; }
+        
+        // Close pane
+        bind "Alt w" { CloseFocus; }
+    }
+}
+
+// Theme and UI
+theme "dracula"
+pane_frames false
+
+// Layout
+default_layout "compact"
+
+// Mouse mode
+mouse_mode true
+
+// Copy mode
+copy_command "pbcopy" // For macOS 
