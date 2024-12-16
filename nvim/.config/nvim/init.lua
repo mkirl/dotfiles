@@ -357,6 +357,20 @@ require('telescope').setup{
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
       }
+    },
+    file_ignore_patterns = {
+      "node_modules",
+      ".git/",
+      "target/",
+      "dist/"
+    },
+    path_display = { "truncate" }
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
+      follow = true,
+      no_ignore = true
     }
   }
 }
