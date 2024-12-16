@@ -13,7 +13,6 @@ $cmd_duration\
 $shell\
 $time\
 $username\
-$custom.keymap\
 $line_break\
 $character\
 """

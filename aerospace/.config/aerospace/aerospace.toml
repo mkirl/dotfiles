@@ -12,7 +12,7 @@ after-login-command = []
 after-startup-command = []
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -131,7 +131,7 @@ alt-shift-6 = 'move-node-to-workspace 6'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitors
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
@@ -157,9 +157,12 @@ down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
-# Terminal workspace
-alt-enter = 'workspace terminal'
-alt-shift-enter = 'move-node-to-workspace terminal'
+# Workspace k
+alt-k = 'workspace k'
+alt-shift-k = 'move-node-to-workspace k'
 
-[window-rules]
-'app.bundle-identifier = "net.kovidgoyal.kitty"' = { workspace = 'terminal' }
+[workspace-to-monitor-force-assignment]
+'k' = { monitor = 'main' }
+
+[window-workspace-rules]
+'app.bundle-identifier = "net.kovidgoyal.kitty"' = { workspace = 'k' }
