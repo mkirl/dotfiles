@@ -348,9 +348,26 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
--- After the telescope plugin installation, add these keymaps:
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffers" })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help" })
+-- Place this after your plugin setup section but before the LSP configuration
+require('telescope').setup{
+  defaults = {
+    -- Default configuration for telescope goes here
+    mappings = {
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      }
+    }
+  }
+}
+
+-- Only set keymaps after telescope is loaded
+local telescope_status_ok, telescope = pcall(require, 'telescope.builtin')
+if telescope_status_ok then
+  vim.keymap.set('n', '<leader>ff', telescope.find_files, { desc = "Find files" })
+  vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = "Live grep" })
+  vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = "Find buffers" })
+  vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = "Find help" })
+else
+  print("Telescope not loaded!")
+end
