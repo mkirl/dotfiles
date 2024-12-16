@@ -28,6 +28,8 @@ set -x HISTIGNORE "pwd:ls:cd"
 # Initialize zoxide (better cd)
 zoxide init fish | source
 
+starship init fish | source
+
 # Run fastfetch if we're in kitty
 if test "$TERM" = xterm-kitty
     fastfetch
