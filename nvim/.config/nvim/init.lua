@@ -371,3 +371,50 @@ if telescope_status_ok then
 else
   print("Telescope not loaded!")
 end
+
+-- After basic settings and before LSP config
+local opts = { noremap = true, silent = true }
+
+-- Buffer navigation
+vim.keymap.set('n', '<leader>h', '<C-w>h', opts)
+vim.keymap.set('n', '<leader>j', '<C-w>j', opts)
+vim.keymap.set('n', '<leader>k', '<C-w>k', opts)
+vim.keymap.set('n', '<leader>l', '<C-w>l', opts)
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
+
+-- Window manipulation
+vim.keymap.set('n', '<leader>wv', '<C-w>v', opts)  -- Split window vertically
+vim.keymap.set('n', '<leader>ws', '<C-w>s', opts)  -- Split window horizontally
+vim.keymap.set('n', '<leader>wd', '<C-w>c', opts)  -- Close current window
+vim.keymap.set('n', '<leader>ww', '<C-w>w', opts)  -- Switch to next window
+
+-- Telescope (these will replace the previous telescope keymaps)
+vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, opts)
+vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, opts)
+vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, opts)
+vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end, opts)
+
+-- Nvim-tree
+vim.keymap.set('n', '<leader>nt', ':NvimTreeToggle<CR>', opts)  -- Toggle Nvim-tree
+vim.keymap.set('n', '<leader>nf', ':NvimTreeFindFile<CR>', opts)  -- Find current file in Nvim-tree
+
+-- Snacks
+vim.keymap.set('n', '<leader>z', function() require('snacks').zen() end, opts)  -- Toggle Zen mode
+vim.keymap.set('n', '<leader>Z', function() require('snacks').zen.zoom() end, opts)  -- Toggle Zoom
+vim.keymap.set('n', '<leader>.', function() require('snacks').scratch() end, opts)  -- Toggle scratch buffer
+vim.keymap.set('n', '<leader>S', function() require('snacks').scratch.select() end, opts)  -- Select scratch buffer
+vim.keymap.set('n', '<leader>n', function() require('snacks').notifier.show_history() end, opts)  -- Notification history
+vim.keymap.set('n', '<leader>bd', function() require('snacks').bufdelete() end, opts)  -- Delete buffer
+
+-- Git
+vim.keymap.set('n', '<leader>gB', function() require('snacks').gitbrowse() end, opts)  -- Git browse
+vim.keymap.set('n', '<leader>gb', function() require('snacks').git.blame_line() end, opts)  -- Git blame line
+vim.keymap.set('n', '<leader>gf', function() require('snacks').lazygit.log_file() end, opts)  -- Lazygit current file history
+vim.keymap.set('n', '<leader>gg', function() require('snacks').lazygit() end, opts)  -- Lazygit
+vim.keymap.set('n', '<leader>gl', function() require('snacks').lazygit.log() end, opts)  -- Lazygit log (cwd)
+
+-- Misc
+vim.keymap.set('n', '<leader>un', function() require('snacks').notifier.hide() end, opts)  -- Dismiss all notifications
+vim.keymap.set('n', ']]', function() require('snacks').words.jump(vim.v.count1) end, opts)  -- Jump to next word reference
+vim.keymap.set('n', '[[', function() require('snacks').words.jump(-vim.v.count1) end, opts)  -- Jump to previous word reference
