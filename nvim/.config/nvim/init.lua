@@ -289,6 +289,7 @@ end)
 require('lspconfig').lua_ls.setup({})
 require('lspconfig').ts_ls.setup({})  -- Use ts_ls for TypeScript
 require('lspconfig').rust_analyzer.setup({})
+require('lspconfig').zls.setup({})  -- Add Zig language support
 require('lspconfig').gopls.setup({
   settings = {
     gopls = {
@@ -337,7 +338,8 @@ require('nvim-treesitter.configs').setup({
     "typescript",
     "rust",
     "python",
-    "nix"
+    "nix",
+    "zig"
   },
   auto_install = true,
   highlight = {

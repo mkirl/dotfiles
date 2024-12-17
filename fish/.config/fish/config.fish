@@ -30,8 +30,8 @@ zoxide init fish | source
 atuin init fish | source
 starship init fish | source
 
-# Run fastfetch if we're in kitty
-if test "$TERM" = xterm-kitty
+# Run fastfetch if we're in kitty and it's an interactive shell
+if status is-interactive && test "$TERM" = "xterm-kitty"
     fastfetch
 end
 
