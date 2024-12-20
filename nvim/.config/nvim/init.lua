@@ -43,6 +43,12 @@ require("lazy").setup({
       'L3MON4D3/LuaSnip',
     }
   },
+  -- Add Harpoon for quick file navigation
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
   -- Add telescope for fuzzy finding
   {
     'nvim-telescope/telescope.nvim',
@@ -434,3 +440,22 @@ vim.keymap.set('n', '<leader>gl', function() require('snacks').lazygit.log() end
 vim.keymap.set('n', '<leader>un', function() require('snacks').notifier.hide() end, opts)  -- Dismiss all notifications
 vim.keymap.set('n', ']]', function() require('snacks').words.jump(vim.v.count1) end, opts)  -- Jump to next word reference
 vim.keymap.set('n', '[[', function() require('snacks').words.jump(-vim.v.count1) end, opts)  -- Jump to previous word reference
+
+-- After your plugin setup but before LSP config
+-- Configure Harpoon
+local harpoon = require("harpoon")
+harpoon:setup()
+
+-- Basic Harpoon keymaps
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add file to Harpoon" })
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggle Harpoon menu" })
+
+-- Quick file navigation (leader + number)
+vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Harpoon file 1" })
+vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon file 2" })
+vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon file 3" })
+vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon file 4" })
+
+-- Sequential navigation with leader + [ or ]
+vim.keymap.set("n", "<leader>[", function() harpoon:list():prev() end, { desc = "Previous Harpoon file" })
+vim.keymap.set("n", "<leader>]", function() harpoon:list():next() end, { desc = "Next Harpoon file" })
