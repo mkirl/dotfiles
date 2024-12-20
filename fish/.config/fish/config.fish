@@ -2,8 +2,6 @@
 
 # Abbreviations
 abbr --add -- ff fastfetch
-abbr --add -- nb '/run/current-system/sw/bin/darwin-rebuild build --flake .#aarch64-darwin'
-abbr --add -- nbs '/run/current-system/sw/bin/darwin-rebuild switch --flake .#aarch64-darwin'
 
 # Aliases
 alias cat bat
@@ -18,6 +16,9 @@ alias search 'rg -p --glob \'!node_modules/*\''
 alias tree 'eza --tree --icons=always'
 
 # Set environment variables
+set -x PATH /opt/homebrew/bin $PATH
+set -x PATH /Applications/AeroSpace.app/Contents/MacOS $PATH
+set -x PATH /Applications/Cursor.app/Contents/MacOS $PATH
 set -x PATH $HOME/.pnpm-packages/bin $HOME/.pnpm-packages $PATH
 set -x PATH $HOME/.npm-packages/bin $HOME/bin $PATH
 set -x PATH $HOME/.local/share/bin $PATH
