@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define colors
+### Catppuccin Macchiato Colors
 export BLACK=0xff181926
 export WHITE=0xffcad3f5
 export RED=0xffed8796
@@ -12,15 +12,35 @@ export MAGENTA=0xffc6a0f6
 export GREY=0xff939ab7
 export TRANSPARENT=0x00000000
 
-# General bar colors
-export BAR_COLOR=0xff1e1e2e
-export BAR_BORDER_COLOR=0xff494d64 #0xa024273a
-export ICON_COLOR=$WHITE # Color of all icons
-export LABEL_COLOR=$WHITE # Color of all labels
-export BACKGROUND_1=0x603c3e4f
-export BACKGROUND_2=0x60494d64
+# Base colors
+export BASE=0xff24273a
+export MANTLE=0xff1e2030
+export CRUST=0xff181926
 
-export POPUP_BACKGROUND_COLOR=0xff1e1e2e
-export POPUP_BORDER_COLOR=$WHITE
+export SURFACE0=0xff363a4f
+export SURFACE1=0xff494d64
+export SURFACE2=0xff5b6078
 
-export SHADOW_COLOR=$BLACK 
+export OVERLAY0=0xff6e738d
+export OVERLAY1=0xff8087a2
+export OVERLAY2=0xff939ab7
+
+# Bar colors
+export BAR_COLOR=$BASE
+export BAR_BORDER_COLOR=$SURFACE1
+export BACKGROUND_1=$SURFACE0
+export BACKGROUND_2=$SURFACE1
+
+# Item colors
+export ICON_COLOR=$BLUE
+export LABEL_COLOR=$WHITE
+export POPUP_BACKGROUND_COLOR=$MANTLE
+export POPUP_BORDER_COLOR=$SURFACE1
+export SHADOW_COLOR=$CRUST
+
+# Battery colors
+export BATTERY_1=$GREEN
+export BATTERY_2=$YELLOW
+export BATTERY_3=$ORANGE
+export BATTERY_4=$RED
+export BATTERY_5=$RED

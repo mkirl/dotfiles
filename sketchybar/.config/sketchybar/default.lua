@@ -1,7 +1,7 @@
 local settings = require("settings")
 local colors = require("colors")
 
--- Equivalent to the --default domain
+-- Configure default settings for all items
 sbar.default({
   updates = "when_shown",
   icon = {
@@ -10,10 +10,16 @@ sbar.default({
       style = settings.font.style_map["Bold"],
       size = 14.0
     },
-    color = colors.white,
+    color = colors.icon,
     padding_left = settings.paddings,
     padding_right = settings.paddings,
-    background = { image = { corner_radius = 9 } },
+    background = { 
+      height = 26,
+      corner_radius = 9,
+      border_width = 2,
+      border_color = colors.item.border,
+      color = colors.item.bg,
+    },
   },
   label = {
     font = {
@@ -21,20 +27,21 @@ sbar.default({
       style = settings.font.style_map["Semibold"],
       size = 13.0
     },
-    color = colors.white,
+    color = colors.text,
     padding_left = settings.paddings,
     padding_right = settings.paddings,
+    shadow = {
+      drawing = true,
+      distance = 2,
+      color = colors.black,
+    },
   },
   background = {
     height = 28,
     corner_radius = 9,
     border_width = 2,
-    border_color = colors.bg2,
-    image = {
-      corner_radius = 9,
-      border_color = colors.grey,
-      border_width = 1
-    }
+    border_color = colors.item.border,
+    color = colors.item.bg,
   },
   popup = {
     background = {
@@ -42,11 +49,15 @@ sbar.default({
       corner_radius = 9,
       border_color = colors.popup.border,
       color = colors.popup.bg,
-      shadow = { drawing = true },
+      shadow = { 
+        drawing = true,
+        distance = 2,
+        color = colors.black,
+      },
     },
-    blur_radius = 50,
+    blur_radius = 20,
   },
-  padding_left = 5,
-  padding_right = 5,
+  padding_left = settings.paddings,
+  padding_right = settings.paddings,
   scroll_texts = true,
 })

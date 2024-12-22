@@ -1,7 +1,6 @@
-require("items.apple")
-require("items.menus")
+-- Load core items
 require("items.spaces")
-require("items.front_app")
-require("items.calendar")
-require("items.widgets")
-require("items.media")
+
+-- Load widgets
+require("items.widgets.volume")
+require("items.widgets.wifi")
