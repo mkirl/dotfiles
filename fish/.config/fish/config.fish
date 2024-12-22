@@ -4,6 +4,7 @@
 abbr --add -- ff fastfetch
 
 # Aliases
+alias vim nvim
 alias cat bat
 alias cd z
 alias diff difft
