@@ -22,5 +22,10 @@
     "mode": "system",
     "light": "One Light",
     "dark": "Rosé Pine Moon"
-  }
+  },
+  "terminal": {
+    "shell": "system",
+    "working_directory": "current_project_directory"
+  },
+  "format_on_save": "on"
 }

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Border options
+options=(
+    style=round        # Border style (round/square)
+    width=8.0         # Border width
+    hidpi=on          # HiDPI support
+    active_color=rainbow    # Special 'rainbow' value for gradient
+    inactive_color=0xff494d64  # Catppuccin surface1 color for inactive windows
+    blur_radius=50    # Blur radius for gradient effect
+    fps=60           # Animation frame rate
+)
+
+# Rainbow gradient colors (Catppuccin-inspired)
+rainbow_colors=(
+    0xfff5c2e7  # Pink
+    0xffcba6f7  # Mauve
+    0xff89dceb  # Sky
+    0xffabe9b3  # Green
+    0xfff8bd96  # Peach
+    0xfffae3b0  # Yellow
+    0xfff5c2e7  # Pink (repeated to complete the cycle)
+) 

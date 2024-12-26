@@ -244,6 +244,9 @@ load_plugins {
 //
 // on_force_close "quit"
 
+// Set your preferred shell here
+default_shell "fish"  // Change this to your preferred shell path
+
 //  Send a request for a simplified ui (without arrow fonts) to plugins
 //  Options:
 //    - true

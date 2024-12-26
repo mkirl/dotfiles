@@ -95,10 +95,24 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- Set Fish as the default shell for terminal
+vim.o.shell = "/opt/homebrew/bin/fish"
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+
+-- Set Go-specific indentation settings
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function()
+    vim.bo.tabstop = 4       -- Width of tab character
+    vim.bo.softtabstop = 4   -- Fine-tunes amount of whitespace
+    vim.bo.shiftwidth = 4    -- Size of indent
+    vim.bo.expandtab = false -- Use tabs instead of spaces
+  end,
+})
 
 -- Make line numbers default
 vim.opt.number = true
@@ -231,7 +245,18 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  { 
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    init = function()
+      -- Disable vim-sleuth for Go files
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "go",
+        callback = function()
+          vim.b.sleuth_automatic = 0
+        end,
+      })
+    end,
+  },
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -289,9 +314,8 @@ require('lazy').setup({
       ▒▒░░▒▒░░      ▒▒▒▒▒▒▒▒▒▒      ░░▒▒░░░░      
         ▒▒░░        ▒▒░░░░░░▒▒        ░░▒▒        
         ▒▒░░░░  ░░░░▒▒░░░░░░▒▒░░░░  ░░░░▒▒        
-        ▒▒░░░░░░░░░░▒▒░░░░░░▒▒░░░░░░░░░░▒▒        
-        ▒▒░░░░░░░░░░░░▒▒▒▒▒▒░░░░░░░░░░░░▒▒        
-      ▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒      
+        ▒▒░░░░░░░░░░░░▒▒░░░░░░▒▒░░░░░░░░░░▒▒        
+        ▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒      
       ▒▒░░░░░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░▒▒      
     ▒▒░░░░▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒░░░░▒▒    
   ▓▓▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒▓▓  
@@ -776,7 +800,19 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true,
+              },
+              staticcheck = true,
+              gofumpt = true,
+              usePlaceholders = true,
+              completeUnimported = true,
+            },
+          },
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -817,6 +853,11 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'gopls', -- Go language server
+        'gofumpt', -- Go formatter
+        'goimports', -- Go import formatter
+        'gomodifytags', -- Go modify struct tags
+        'impl', -- Go interface implementation generator
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

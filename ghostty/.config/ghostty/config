@@ -1,0 +1,24 @@
+theme = catppuccin-mocha
+font-family = Fira Code Nerd Font
+font-size = 16
+
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = false
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+macos-window-shadow = true
+
+clipboard-read = allow
+clipboard-write = allow
+
+shell-integration = fish
+command = /opt/homebrew/bin/fish
+
+
+quick-terminal-position = top
+quick-terminal-screen = mouse
+
+keybind = global:opt+space=toggle_quick_terminal
+
+quick-terminal-animation-duration = 0.1

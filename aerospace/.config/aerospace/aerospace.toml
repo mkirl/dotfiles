@@ -14,12 +14,13 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
     'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
 ]
 
 exec-on-workspace-change = [
     '/bin/bash',
     '-c',
-    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
 ]
 
 # Start AeroSpace at login
@@ -53,10 +54,10 @@ on-focus-changed = ['move-mouse window-lazy-center']
 [gaps]
 inner.horizontal = 5 
 inner.vertical =  5
-outer.top = 8 
-outer.left = 0
-outer.bottom = 0
-outer.right = 0
+outer.top = 10 
+outer.left = 5
+outer.bottom = 5
+outer.right = 5
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
 [exec] # Again, you don't need to copy all config sections to your config.
@@ -136,7 +137,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 alt-shift-r = ['exec-and-forget /opt/homebrew/bin/sketchybar --reload']
 
-# Auto-floating windows
+#Auto-floating windows
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = ['layout floating']

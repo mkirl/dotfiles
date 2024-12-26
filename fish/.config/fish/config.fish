@@ -23,6 +23,7 @@ set -x PATH /Applications/Cursor.app/Contents/MacOS $PATH
 set -x PATH $HOME/.pnpm-packages/bin $HOME/.pnpm-packages $PATH
 set -x PATH $HOME/.npm-packages/bin $HOME/bin $PATH
 set -x PATH $HOME/.local/share/bin $PATH
+set -x PATH $HOME/go/bin $PATH
 
 #Zig 0.14
 set -gx PATH /Users/mike/Prodev/zig-macos-aarch64-0.14.0-dev.2546+0ff0bdb4a $PATH
