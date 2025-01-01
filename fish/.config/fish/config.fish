@@ -15,6 +15,8 @@ alias pn pnpm
 alias px pnpx
 alias search 'rg -p --glob \'!node_modules/*\''
 alias tree 'eza --tree --icons=always'
+alias goland="open -a GoLand"
+alias cursor="open -a Cursor"
 
 # Set environment variables
 set -x PATH /opt/homebrew/bin $PATH

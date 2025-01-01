@@ -15,10 +15,12 @@ clipboard-write = allow
 shell-integration = fish
 command = /opt/homebrew/bin/fish
 
-
 quick-terminal-position = top
 quick-terminal-screen = mouse
-
 keybind = global:opt+space=toggle_quick_terminal
-
 quick-terminal-animation-duration = 0.1
+
+
+custom-shader = /Users/mike/repos/ghostty-shaders/sparks-from-fire.glsl
+background-opacity = 0.7
+background-blur-radius = 20
