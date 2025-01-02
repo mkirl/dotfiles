@@ -20,7 +20,6 @@ alias cursor="open -a Cursor"
 
 # Set environment variables
 set -x PATH /opt/homebrew/bin $PATH
-set -x PATH /Applications/AeroSpace.app/Contents/MacOS $PATH
 set -x PATH /Applications/Cursor.app/Contents/MacOS $PATH
 set -x PATH $HOME/.pnpm-packages/bin $HOME/.pnpm-packages $PATH
 set -x PATH $HOME/.npm-packages/bin $HOME/bin $PATH
