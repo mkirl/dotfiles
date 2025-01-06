@@ -1,26 +1,6 @@
 #!/bin/bash
 
-ICON_PADDING_RIGHT=5
+source "$HOME/.config/sketchybar/plugins/icon_map.sh"
+__icon_map "$INFO"
 
-case $INFO in
-  "Arc")
-    ICON=":arc:"
-    ;;
-  "Code")
-    ICON=":vscode:"
-    ;;
-  "Finder")
-    ICON=":finder:"
-    ;;
-  "Firefox")
-    ICON=":firefox:"
-    ;;
-  "GhostTy")
-    ICON=":terminal:"
-    ;;
-  *)
-    ICON=":default:"
-    ;;
-esac
-
-sketchybar --set $NAME icon="$ICON" icon.padding_right=$ICON_PADDING_RIGHT label="$INFO" 
+sketchybar --set $NAME icon="$icon_result" icon.padding_right=5 label="$INFO" 

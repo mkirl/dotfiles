@@ -8,7 +8,7 @@ sketchybar --bar position=top \
                 padding_left=10 \
                 padding_right=10 \
                 corner_radius=12 \
-                color=0xCC2E3440 \
+                color=0x00000000 \
                 blur_radius=20 \
                 --topmost=on \
                 --sticky=off
@@ -42,11 +42,14 @@ sketchybar --add item apple_logo left \
     icon.font="FiraCode Nerd Font:Bold:20.0" \
     icon.color=0xffffffff \
     label.drawing=off \
-    padding_left=10 \
-    padding_right=10 \
+    padding_left=15 \
+    padding_right=15 \
+    icon.padding_left=12 \
+    icon.padding_right=12 \
     background.drawing=on \
     background.color=0x00000000 \
-    background.border_width=0 \
+    background.border_width=2 \
+    background.border_color=0xFF2962FF \
     background.corner_radius=8
 
 ##### Adding Workspaces Indicators #####
@@ -55,7 +58,7 @@ workspaces=$(/opt/homebrew/bin/aerospace list-workspaces --all)
 for sid in $(echo $workspaces); do
   # Padding for visual alignment
   if [ "$sid" = "1" ]; then
-    padding_left=4
+    padding_left=5
   else
     padding_left=2
   fi
