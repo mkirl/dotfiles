@@ -61,6 +61,9 @@ outer.top = [
     { monitor."LG ULTRAGEAR" = 45 },
     { monitor."DELL U2722DE" = 45 },
     { monitor."DELL P3421W" = 45 },
+    { monitor."DELL U2719D" = 45 },
+    { monitor."DELL U2717D" = 45 },
+    { monitor."DELL U2715H" = 45 },
     15,                              # default value for other monitors
 ]
 

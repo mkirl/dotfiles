@@ -17,6 +17,7 @@ alias search 'rg -p --glob \'!node_modules/*\''
 alias tree 'eza --tree --icons=always'
 alias goland="open -a GoLand"
 alias cursor="open -a Cursor"
+alias idea="open -a 'IntelliJ IDEA'"
 
 # Set environment variables
 set -x PATH /opt/homebrew/bin $PATH
@@ -27,7 +28,7 @@ set -x PATH $HOME/.local/share/bin $PATH
 set -x PATH $HOME/go/bin $PATH
 
 # Set editor variable
-set -x EDITOR "nvim"
+set -x EDITOR nvim
 
 #Zig 0.14
 set -gx PATH /Users/mike/Prodev/zig-macos-aarch64-0.14.0-dev.2546+0ff0bdb4a $PATH
@@ -41,7 +42,7 @@ atuin init fish | source
 starship init fish | source
 
 # Run fastfetch if we're in kitty and it's an interactive shell
-if status is-interactive && test "$TERM" = "xterm-kitty"
+if status is-interactive && test "$TERM" = xterm-kitty
     fastfetch
 end
 
